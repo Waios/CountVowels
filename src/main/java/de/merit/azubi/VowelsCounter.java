@@ -1,17 +1,10 @@
 package de.merit.azubi;
 
-import java.util.Scanner;
+public class VowelsCounter {
 
-public class Main {
 
-    public static void main(String[] args) {
+    public int[] analyze(String input) {
 
-        // write your code here
-        System.out.println("Bitte ein Wort eingeben:");
-
-        Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine();
-        //System.out.println(input);
         int voka = 0;
         int voke = 0;
         int voki = 0;
@@ -66,12 +59,8 @@ public class Main {
             }
 
         }
-        System.out.println("Anzahl a: " + voka);
-        System.out.println("Anzahl e: " + voke);
-        System.out.println("Anzahl i: " + voki);
-        System.out.println("Anzahl o: " + voko);
-        System.out.println("Anzahl u: " + voku);
-        System.out.println("Anzahl Konsonanten: " + konsonant);
-        System.out.println("Anzahl Umlaute: "+umlaut);
+
+
+        return new int[] {voka,voke,voki,voko,voku,konsonant,umlaut};
     }
 }
