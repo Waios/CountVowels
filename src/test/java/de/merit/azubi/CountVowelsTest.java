@@ -35,13 +35,15 @@ import static org.junit.Assert.*;
             //when
             VowelsCounter theCounter = new VowelsCounter();
 
-            int[] result =theCounter.analyze(testString);
+            ArrayList<BuchstabeAnzahl> result =theCounter.analyze(testString);
 
 
             //then
-            assertEquals(result[0], 1); //a
-            assertEquals(result[1], 0); //e
-
+            for (BuchstabeAnzahl currentBuchstabeAnzahl : result) {
+                if (currentBuchstabeAnzahl.getBuchstabe().equals("a")){
+                    assertEquals(currentBuchstabeAnzahl.getAnz(), 1);
+                }
+            }
         }
 
         @Test
@@ -54,13 +56,24 @@ import static org.junit.Assert.*;
             //when
             VowelsCounter theCounter = new VowelsCounter();
 
-            int[] result =theCounter.analyze(testString);
+            ArrayList<BuchstabeAnzahl> result =theCounter.analyze(testString);
 
 
             //then
-            assertEquals(result[0], 0); //a
-            assertEquals(result[1], 1); //e
-            assertEquals(result[5], 4); //konsonant
+
+            for (BuchstabeAnzahl currentBuchstabeAnzahl : result) {
+                if (currentBuchstabeAnzahl.getBuchstabe().equals("a")){
+                    assertEquals(currentBuchstabeAnzahl.getAnz(), 0);
+                }
+                if (currentBuchstabeAnzahl.getBuchstabe().equals("e")){
+                    assertEquals(currentBuchstabeAnzahl.getAnz(), 1);
+                }
+                if (currentBuchstabeAnzahl.getBuchstabe().equals("Konsonant")){
+                    assertEquals(currentBuchstabeAnzahl.getAnz(), 4);
+                }
+            }
+
+
 
         }
 
@@ -74,14 +87,54 @@ import static org.junit.Assert.*;
             //when
             VowelsCounter theCounter = new VowelsCounter();
 
-            int[] result =theCounter.analyze(testString);
+            ArrayList<BuchstabeAnzahl> result =theCounter.analyze(testString);
 
 
             //then
-            assertEquals(result[0], 0); //a
-            assertEquals(result[1], 1); //e
-            assertEquals(result[5], 6); //konsonant
-            assertEquals(result[6], 1); //umlaute
+
+            for (BuchstabeAnzahl currentBuchstabeAnzahl : result) {
+                if (currentBuchstabeAnzahl.getBuchstabe().equals("Umlaut")){
+                    assertEquals(currentBuchstabeAnzahl.getAnz(), 1);
+                }
+            }
+
+        }
+
+        @Test
+        public void countSzVowelsTest() {
+
+            // given
+
+            String testString = "Kuß";
+
+            //when
+            VowelsCounter theCounter = new VowelsCounter();
+
+            ArrayList<BuchstabeAnzahl> result = theCounter.analyze(testString);
+
+
+            //then
+
+            for (BuchstabeAnzahl currentBuchstabeAnzahl : result) {
+                if (currentBuchstabeAnzahl.getBuchstabe().equals("sz")) {
+                    assertEquals(currentBuchstabeAnzahl.getAnz(), 1);
+                }
+                if (currentBuchstabeAnzahl.getBuchstabe().equals("u")) {
+                    assertEquals(currentBuchstabeAnzahl.getAnz(), 1);
+                }
+                if (currentBuchstabeAnzahl.getBuchstabe().equals("Konsonant")) {
+                    assertEquals(currentBuchstabeAnzahl.getAnz(), 1);
+                }
+                if (currentBuchstabeAnzahl.getBuchstabe().equals("a")) {
+                    assertEquals(currentBuchstabeAnzahl.getAnz(), 0);
+                }
+                if (currentBuchstabeAnzahl.getBuchstabe().equals("e")) {
+                    assertEquals(currentBuchstabeAnzahl.getAnz(), 0);
+                }
+                if (currentBuchstabeAnzahl.getBuchstabe().equals("i")){
+                    assertEquals(currentBuchstabeAnzahl.getAnz(), 0);
+                }
+            }
 
         }
     }

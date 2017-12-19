@@ -2,19 +2,25 @@ package de.merit.azubi;
 
 public class BuchstabeAnzahl {
 
-    private char buchstabe;
+    private String buchstabe;
     private int anz;
 
-    public BuchstabeAnzahl(char buchstabe) {
+    //Konstruktor
+    public BuchstabeAnzahl(String buchstabe) {
         this.buchstabe = buchstabe;
         this.anz = 0;
     }
 
-    public char getBuchstabe() {
+
+    public String getBuchstabe() {
         return buchstabe;
     }
 
     public int getAnz() {
         return anz;
+    }
+
+    public void incAnz() {
+        anz++;
     }
 }

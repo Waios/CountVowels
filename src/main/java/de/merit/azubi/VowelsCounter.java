@@ -1,17 +1,22 @@
 package de.merit.azubi;
 
+import java.util.ArrayList;
+
 public class VowelsCounter {
 
 
-    public int[] analyze(String input) {
+    public ArrayList<BuchstabeAnzahl> analyze(String input) {
 
-        int voka = 0;
-        int voke = 0;
-        int voki = 0;
-        int voko = 0;
-        int voku = 0;
-        int konsonant = 0;
-        int umlaut = 0;
+
+
+        BuchstabeAnzahl voka = new BuchstabeAnzahl("a");
+        BuchstabeAnzahl voke = new BuchstabeAnzahl("e");
+        BuchstabeAnzahl voki = new BuchstabeAnzahl("i");
+        BuchstabeAnzahl voko = new BuchstabeAnzahl("o");
+        BuchstabeAnzahl voku = new BuchstabeAnzahl("u");
+        BuchstabeAnzahl konsonant = new BuchstabeAnzahl("Konsonant");
+        BuchstabeAnzahl umlaut =   new BuchstabeAnzahl("Umlaut");
+        BuchstabeAnzahl sz = new BuchstabeAnzahl("sz");
 
         String lowInput= input.toLowerCase();
 
@@ -23,44 +28,59 @@ public class VowelsCounter {
             //System.out.println(aChar);
             switch (aChar) {
                 case 'a':
-                    voka++;
-                    System.out.println("a");
+                    voka.incAnz();
+
                     break;
 
                 case 'e':
-                    voke++;
-                    System.out.println("e");
+                    voke.incAnz();
+
                     break;
 
                 case 'i':
-                    voki++;
-                    System.out.println("i");
+                    voki.incAnz();
+
                     break;
 
                 case 'o':
-                    voko++;
-                    System.out.println("o");
+                    voko.incAnz();
+
                     break;
 
                 case 'u':
-                    voku++;
-                    System.out.println("u");
+                    voku.incAnz();
+
+                    break;
+
+                case 'ß':
+                    sz.incAnz();
+
                     break;
 
                 case 'ä':
-                case'ö':
+                case 'ö':
                 case 'ü':
-                    umlaut++;
+                    umlaut.incAnz();
                     break;
 
 
                 default:
-                    konsonant++;
+                    konsonant.incAnz();
             }
 
         }
 
 
-        return new int[] {voka,voke,voki,voko,voku,konsonant,umlaut};
+        ArrayList<BuchstabeAnzahl> resultList = new ArrayList<BuchstabeAnzahl>();
+        resultList.add(voka);
+        resultList.add(voke);
+        resultList.add(voki);
+        resultList.add(voko);
+        resultList.add(voku);
+        resultList.add(konsonant);
+        resultList.add(umlaut);
+        resultList.add(sz);
+
+        return resultList;
     }
 }

@@ -15,7 +15,7 @@ public class BuchstabeAnzTest {
     public void  simpleTest() {
 
         //given
-        char in = 'a';
+        String in = "a";
         // when
 
         BuchstabeAnzahl theBuchstabeAnz = new BuchstabeAnzahl(in);
